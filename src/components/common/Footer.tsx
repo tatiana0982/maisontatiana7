@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                     <EditText
                       placeholder="Enter an email"
                       value={email}
-                      onChange={setEmail}
+                      onChange={e => setEmail(e.target.value)}
                       type="email"
                       className="flex-1 w-full sm:w-auto"
                       size={undefined}
