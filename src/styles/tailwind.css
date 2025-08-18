@@ -48,6 +48,16 @@
 /* --- END OF NEW ANIMATION --- */
 }
 
+ /* --- ADDED UTILITY TO HIDE SCROLLBAR --- */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+
 /* (All other existing keyframes and styles remain unchanged) */
 @keyframes fadeInUp {
   from {
