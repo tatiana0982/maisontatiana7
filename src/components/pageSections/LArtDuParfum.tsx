@@ -12,12 +12,12 @@ const LArtDuParfum: React.FC = () => {
               L'ART DU PARFUM
             </h2>
             <p className="text-base lg:text-lg font-atacama text-gray-700 mb-8 leading-relaxed">
-              Born in France, guided by tradition, and touched by Arabic olfactory artistry every fragrance is a world of its own, crafted for those who move in quiet confidence.
+              Born in France, guided by tradition, and enriched with Arabic olfactory artistry, each fragrance is a world of its own crafted for those who move with quiet confidence.
             </p>
             <div className="text-base font-atacama text-gray-500 space-y-3 inline-block text-left">
               <p>• Made in France with noble ingredients</p>
               <p>• Inspired by Eastern elegance</p>
-              <p>• Five signature eaux de parfum</p>
+              <p>• Five signature Eau de Parfum</p>
               <p>• Designed to linger, not fade</p>
             </div>
           </div>
