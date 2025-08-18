@@ -1,0 +1,43 @@
+import React from 'react';
+import Image from 'next/image';
+
+const LArtDuParfum: React.FC = () => {
+  return (
+    <section className="animate-on-scroll bg-white">
+      <div className="lg:grid lg:grid-cols-2 lg:items-center">
+        {/* Text Container */}
+        <div className="order-2 lg:order-1 px-4 py-12 sm:p-16 lg:p-24">
+          <div className="max-w-xl mx-auto lg:ml-auto lg:mr-0 text-center lg:text-left">
+            <h2 className="text-3xl lg:text-4xl font-atacama mb-6 tracking-wide">
+              L'ART DU PARFUM
+            </h2>
+            <p className="text-base lg:text-lg font-atacama text-gray-700 mb-8 leading-relaxed">
+              Born in France, guided by tradition, and touched by Arabic olfactory artistry every fragrance is a world of its own, crafted for those who move in quiet confidence.
+            </p>
+            <div className="text-base font-atacama text-gray-500 space-y-3 inline-block text-left">
+              <p>• Made in France with noble ingredients</p>
+              <p>• Inspired by Eastern elegance</p>
+              <p>• Five signature eaux de parfum</p>
+              <p>• Designed to linger, not fade</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Image Container */}
+        <div className="order-1 lg:order-2">
+          <div className="group overflow-hidden h-full">
+            <Image 
+              src="/images/img_img_0444_1.png" 
+              width={800} 
+              height={970} 
+              alt="Perfume bottle with a model" 
+              className="w-full h-full object-cover group-hover-zoom"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default LArtDuParfum;
