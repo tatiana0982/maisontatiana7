@@ -10,7 +10,9 @@ const products = [
 
 const ProductGrid: React.FC = () => {
   return (
-    <section className="animate-on-scroll w-full py-12 lg:py-20 bg-gray-50">
+    // 1. Added margin-top for spacing from the previous section.
+    // 2. Removed the gray background and vertical padding to make it seamless.
+    <section className="animate-on-scroll w-full mt-16 lg:mt-24">
       <div className="grid grid-cols-1 sm:grid-cols-2">
         {products.map((product, index) => (
           <div key={index} className="group overflow-hidden">
@@ -19,7 +21,8 @@ const ProductGrid: React.FC = () => {
               width={720} 
               height={720} 
               alt={product.alt}
-              className="w-full h-auto object-cover group-hover-zoom"
+              // 3. Added refined animation classes for a smooth, luxury feel.
+              className="w-full h-auto object-cover transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105"
             />
           </div>
         ))}
