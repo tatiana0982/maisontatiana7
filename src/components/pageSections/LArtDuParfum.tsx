@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const LArtDuParfum: React.FC = () => {
   return (
-    <section className="animate-on-scroll bg-white">
+    <section className="animate-on-scroll bg-white mt-16 lg:mt-24"> {/* Added margin-top here */}
       <div className="lg:grid lg:grid-cols-2 lg:items-center">
         {/* Text Container */}
         <div className="order-2 lg:order-1 px-4 py-12 sm:p-16 lg:p-24">
