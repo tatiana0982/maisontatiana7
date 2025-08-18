@@ -1,6 +1,5 @@
 'use client';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const notifications = [
   { message: 'Receive a surprise gift with all orders.', link: { text: 'Discover', href: '#' } },
@@ -8,47 +7,36 @@ const notifications = [
   { message: 'Discover our new handcrafted fragrances from France.', link: { text: 'Explore', href: '#' } },
 ];
 
-const NotificationBanner: React.FC = () => {
-  const [showBanner, setShowBanner] = useState(true);
+interface NotificationBannerProps {
+  isVisible: boolean;
+  onClose: () => void;
+}
+
+const NotificationBanner: React.FC<NotificationBannerProps> = ({ isVisible, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    if (!showBanner) return;
+    if (!isVisible) return;
 
     const timer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % notifications.length);
     }, 4000);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, showBanner]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    // Wait for the fade-out animation to complete before removing the component
-    setTimeout(() => {
-      setShowBanner(false);
-    }, 300); // This duration should match the transition duration below
-  };
-
-  if (!showBanner) {
-    return null;
-  }
+  }, [currentIndex, isVisible]);
 
   return (
-    // Added transition for opacity and height for the smooth fade-out effect
+    // The banner now animates its height and opacity based on the isVisible prop
     <div 
-      className={`w-full bg-black text-white relative flex items-center justify-center overflow-hidden transition-all duration-300 ease-luxury ${isClosing ? 'opacity-0 h-0' : 'h-14'}`}
+      className={`w-full bg-black text-white relative flex items-center justify-center overflow-hidden transition-all duration-300 ease-luxury ${isVisible ? 'h-14 opacity-100' : 'h-0 opacity-0'}`}
     >
       <div className="relative h-full w-full overflow-hidden">
         {notifications.map((notification, index) => (
           <div
             key={index}
-            // Updated transition to use the custom 'ease-luxury' curve
             className="absolute top-0 left-0 w-full h-full flex items-center justify-center transition-transform duration-700 ease-luxury"
             style={{ transform: `translateY(${(index - currentIndex) * 100}%)` }}
           >
-            {/* Made text smaller on mobile (text-xs) and slightly larger on bigger screens (sm:text-sm) */}
             <span className="text-xs sm:text-sm tracking-wide text-center px-12">
               {notification.message}
               <a href={notification.link.href} className="font-semibold underline ml-2 whitespace-nowrap">
@@ -59,7 +47,7 @@ const NotificationBanner: React.FC = () => {
         ))}
       </div>
       <button 
-        onClick={handleClose} 
+        onClick={onClose} 
         aria-label="Close promo banner" 
         className="absolute right-0 top-0 h-full px-4 flex items-center justify-center"
       >
