@@ -2,7 +2,10 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section 
+      // On mobile (default), height is 75% of the viewport. On large screens, it becomes full-screen.
+      className="relative w-full h-[75vh] lg:h-screen overflow-hidden"
+    >
       <video
         src="/videos/hero_video.mp4"
         className="w-full h-full object-cover brightness-75"
