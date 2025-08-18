@@ -6,7 +6,7 @@ const notifications = [
   { message: 'Follow @maisontatiana7 for exclusive updates.', link: { text: 'Follow Us', href: 'https://www.instagram.com/maisontatiana7/' } },
   { message: 'Limited Edition: The exclusive collection has arrived.', link: { text: 'Shop Now', href: '#' } },
   { message: 'Discover our new handcrafted fragrances from France.', link: { text: 'Explore', href: '#' } },
-  { message: 'A scent for every moment — curated sets now available.', link: { text: 'Select Samples', href: '#' } },
+  { message: 'A scent for every moment curated sets now available.', link: { text: 'Select Samples', href: '#' } },
   { message: 'Experience the essence of luxury with our new arrivals.', link: { text: 'View Collection', href: '#' } },
   { message: 'Join our fragrance community for exclusive offers.', link: { text: 'Join Now', href: '#' } },
   { message: 'Explore our artisanal perfumes crafted in France.', link: { text: 'Shop Artisanal', href: '#' } },
