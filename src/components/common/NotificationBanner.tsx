@@ -2,9 +2,18 @@
 import React, { useState, useEffect } from 'react';
 
 const notifications = [
-  { message: 'Receive a surprise gift with all orders.', link: { text: 'Discover', href: '#' } },
-  { message: 'Free shipping on all orders over 100 euros.', link: { text: 'Shop Now', href: '#' } },
+  { message: 'Receive a surprise gift with every order.', link: { text: 'Discover', href: '#' } },
+  { message: 'Follow @maisontatiana7 for exclusive updates.', link: { text: 'Follow Us', href: 'https://www.instagram.com/maisontatiana7/' } },
+  { message: 'Limited Edition: The exclusive collection has arrived.', link: { text: 'Shop Now', href: '#' } },
   { message: 'Discover our new handcrafted fragrances from France.', link: { text: 'Explore', href: '#' } },
+  { message: 'A scent for every moment — curated sets now available.', link: { text: 'Select Samples', href: '#' } },
+  { message: 'Experience the essence of luxury with our new arrivals.', link: { text: 'View Collection', href: '#' } },
+  { message: 'Join our fragrance community for exclusive offers.', link: { text: 'Join Now', href: '#' } },
+  { message: 'Explore our artisanal perfumes crafted in France.', link: { text: 'Shop Artisanal', href: '#' } },
+  { message: 'Discover the art of gifting with personalized scents.', link: { text: 'Explore Gifts', href: '#' } },
+  { message: 'Experience the essence of luxury with our new arrivals.', link: { text: 'View Collection', href: '#' } },
+  { message: 'Discover the perfect scent for every occasion.', link: { text: 'Find Your Scent', href: '#' } },
+  { message: 'Join our fragrance journey and explore new horizons.', link: { text: 'Join Journey', href: '#' } },
 ];
 
 interface NotificationBannerProps {
