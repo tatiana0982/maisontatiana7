@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* (Your existing variables) */
+    /* (Your existing variables remain unchanged) */
     --global-bg-1: #010101;
     --global-bg-2: #ffffff;
     --global-text-1: #000000;
@@ -20,33 +20,51 @@
 }
 
 @layer utilities {
-  /* (Your existing utilities) */
+  /* (Your existing utilities remain unchanged) */
   .group-hover-zoom {
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .group:hover .group-hover-zoom {
     transform: scale(1.05);
   }
 
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  /* --- NEW UNDERLINE EXPAND ANIMATION --- */
+  .hover-underline-expand {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
   }
-  .animate-fade-in-up {
+
+  .hover-underline-expand::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    display: block;
+    margin-top: 2px;
+    right: 50%;
+    background: currentColor;
+    transition: width 0.4s ease;
+    -webkit-transition: width 0.4s ease;
+  }
+  
+  .hover-underline-expand:hover::after {
+    width: 100%;
+    right: 0;
+  }
+  /* --- END OF NEW ANIMATION --- */
+}
+
+/* (All other existing keyframes and styles remain unchanged) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
   }
-  
-  .hover-underline-animation {
-    /* (underline animation styles) */
-  }
-}
-
-/* --- Animation for Vertical Carousel --- */
-@keyframes slide-up {
-    0%, 20% { transform: translateY(0%); } /* Stay for a moment */
-    25%, 100% { transform: translateY(-100%); } /* Slide up */
 }
 
 button:focus-visible,

@@ -26,6 +26,10 @@ module.exports = {
         'hellix': ['Hellix', 'sans-serif'],
         'atacama': ['Atacama Trial', 'serif'],
         'inria': ['Inria Serif', 'serif']
+      },
+      // --- ADDED FOR SMOOTHER ANIMATION ---
+      transitionTimingFunction: {
+        'luxury': 'cubic-bezier(0.4, 0, 0.2, 1)',
       }
     }
   },
