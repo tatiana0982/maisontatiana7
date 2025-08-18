@@ -1,0 +1,13 @@
+@import './tailwind.css';
+@import url('https://fonts.googleapis.com/css2?family=Hellix:wght@400;500;700&family=Atacama+Trial:wght@400&family=Inria+Serif:wght@400&display=swap');
+
+body {
+  font-family: 'Hellix', 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
