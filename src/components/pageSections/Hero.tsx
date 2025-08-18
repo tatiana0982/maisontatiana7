@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       className="relative w-full h-[75vh] lg:h-screen overflow-hidden"
     >
       <video
-        src="/videos/hero_video.mp4"
+        src="/videos/hero_video1.mp4"
         className="w-full h-full object-cover brightness-75"
         autoPlay
         muted

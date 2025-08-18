@@ -8,7 +8,7 @@ const FinalImage: React.FC = () => {
     >
       <div className="group overflow-hidden h-full">
         <video
-          src="/videos/hero_video.mp4"
+          src="/videos/hero_video1.mp4"
           // Using a poster image is good practice for video load time
           poster="/images/img_luxury_perfume.png"
           className="w-full h-full object-cover transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105"
