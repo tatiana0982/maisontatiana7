@@ -4,10 +4,6 @@ import Image from 'next/image';
 const FragrantGetaway: React.FC = () => {
   return (
     <section className="animate-on-scroll group relative w-full mt-16 lg:mt-24 overflow-hidden">
-      {/* - transform-gpu forces hardware acceleration for smoother animations.
-        - duration-500 provides a slightly quicker, more responsive feel.
-        - ease-luxury uses the new custom timing function for a high-end transition.
-      */}
       <div className="transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105">
         <Image
           src="/images/img_untitled_design_2_1.png"
@@ -22,7 +18,8 @@ const FragrantGetaway: React.FC = () => {
         <h3 className="text-base lg:text-lg font-light text-white/90 mb-2 tracking-widest uppercase">
           A Fragrant Getaway
         </h3>
-        <a href="#" className="text-sm lg:text-base font-normal text-white hover-underline-expand">
+        {/* The new animation class is applied here */}
+        <a href="#" className="text-sm lg:text-base font-normal text-white hover-underline-wipe">
           Discover
         </a>
       </div>

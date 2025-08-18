@@ -28,31 +28,24 @@
     transform: scale(1.05);
   }
 
-  /* --- NEW UNDERLINE EXPAND ANIMATION --- */
-  .hover-underline-expand {
-    position: relative;
-    text-decoration: none;
-    display: inline-block;
+/* --- ADDED YOUR PRECISE UNDERLINE WIPE ANIMATION --- */
+@layer components {
+  .hover-underline-wipe {
+    @apply relative inline-block no-underline; /* Base styles for the link */
   }
 
-  .hover-underline-expand::after {
+  .hover-underline-wipe::before {
     content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    display: block;
-    margin-top: 2px;
-    right: 50%;
-    background: currentColor;
-    transition: width 0.4s ease;
-    -webkit-transition: width 0.4s ease;
+    @apply absolute bottom-[-2px] left-0 h-[1px] w-full bg-current
+           origin-right scale-x-0 
+           transition-transform duration-300 ease-in-out;
   }
   
-  .hover-underline-expand:hover::after {
-    width: 100%;
-    right: 0;
+  .hover-underline-wipe:hover::before {
+    @apply origin-left scale-x-100;
   }
-  /* --- END OF NEW ANIMATION --- */
+}
+/* --- END OF NEW ANIMATION --- */
 }
 
 /* (All other existing keyframes and styles remain unchanged) */
