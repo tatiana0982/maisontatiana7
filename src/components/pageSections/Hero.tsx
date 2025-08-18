@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Hero: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
+    checkScreenSize(); // initial check
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  const videoSrc = isMobile
+    ? '/videos/hero_video2.mp4'
+    : '/videos/hero_video1.mp4';
+
   return (
-    <section 
-      // CORRECTED: Height is now 90% of the viewport height on mobile, which is much larger.
-      // It still transitions to a full 100% height on large screens.
-      className="relative w-full h-[90vh] lg:h-screen overflow-hidden bg-white"
-    >
+    <section className="relative w-full h-screen overflow-hidden bg-white">
       <video
-        src="/videos/hero_video1.mp4"
-        className="w-full h-full object-contain"
+        src={videoSrc}
+        className="w-full h-full object-cover"
         autoPlay
         muted
         loop
         playsInline
-        poster="/images/img_whatsapp_video_2025_08_15.png" // Fallback image while video loads
+        poster="/images/img_whatsapp_video_2025_08_15.png"
       />
     </section>
   );
