@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import MobileMenu from './Mobilemenu';
+import MobileMenu from './MobileMenu';
 
 const navLinks = [
   { name: 'Shop', href: '#' },
