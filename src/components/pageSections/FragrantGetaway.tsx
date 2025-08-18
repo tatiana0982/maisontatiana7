@@ -3,14 +3,18 @@ import Image from 'next/image';
 
 const FragrantGetaway: React.FC = () => {
   return (
-    <section className="animate-on-scroll group relative w-full mt-16 lg:mt-24 overflow-hidden">
-      <div className="transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105">
+    <section 
+      // The section now has a defined height (50vh on mobile, up to 70vh on desktop)
+      className="animate-on-scroll group relative w-full mt-16 lg:mt-24 overflow-hidden h-[50vh] md:h-[60vh] lg:h-[70vh]"
+    >
+      <div className="transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105 h-full">
         <Image
           src="/images/img_untitled_design_2_1.png"
           width={1920}
           height={960}
           alt="A collection of five Maison Tatiana 7 perfume bottles"
-          className="w-full h-auto"
+          // The image now fills the taller container, using object-cover to maintain its aspect ratio
+          className="w-full h-full object-cover"
         />
       </div>
       
@@ -18,7 +22,6 @@ const FragrantGetaway: React.FC = () => {
         <h3 className="text-base lg:text-lg font-light text-white/90 mb-2 tracking-widest uppercase">
           A Fragrant Getaway
         </h3>
-        {/* The new animation class is applied here */}
         <a href="#" className="text-sm lg:text-base font-normal text-white hover-underline-wipe">
           Discover
         </a>

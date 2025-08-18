@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const LArtDuParfum: React.FC = () => {
   return (
-    <section className="animate-on-scroll bg-white mt-16 lg:mt-24"> {/* Added margin-top here */}
+    <section className="animate-on-scroll bg-white mt-16 lg:mt-24">
       <div className="lg:grid lg:grid-cols-2 lg:items-center">
         {/* Text Container */}
         <div className="order-2 lg:order-1 px-4 py-12 sm:p-16 lg:p-24">
@@ -23,15 +23,15 @@ const LArtDuParfum: React.FC = () => {
           </div>
         </div>
 
-        {/* Image Container */}
-        <div className="order-1 lg:order-2">
-          <div className="group overflow-hidden h-full">
+        {/* Image Container with Responsive Sizing */}
+        <div className="order-1 lg:order-2 px-4 sm:px-6 lg:p-0">
+          <div className="group overflow-hidden max-w-sm mx-auto sm:max-w-md lg:max-w-none lg:mx-0">
             <Image 
               src="/images/img_img_0444_1.png" 
               width={800} 
               height={970} 
               alt="Perfume bottle with a model" 
-              className="w-full h-full object-cover group-hover-zoom"
+              className="w-full h-auto object-cover transition-transform duration-500 ease-luxury group-hover:scale-105"
             />
           </div>
         </div>
