@@ -1,15 +1,23 @@
 import React from 'react';
-import Image from 'next/image';
 
 const FinalImage: React.FC = () => {
   return (
-    <section className="animate-on-scroll w-full h-[60vh] lg:h-[80vh] relative">
-      <Image
-        src="/images/img_luxury_perfume.png"
-        alt="A luxury perfume bottle from Maison Tatiana 7"
-        fill={true} // Updated from layout="fill"
-        className="object-cover" // Updated from objectFit="cover"
-      />
+    <section 
+      // Added top margin for spacing and set responsive height
+      className="animate-on-scroll w-full h-[60vh] lg:h-auto"
+    >
+      <div className="group overflow-hidden h-full">
+        <video
+          src="/videos/hero_video.mp4"
+          // Using a poster image is good practice for video load time
+          poster="/images/img_luxury_perfume.png"
+          className="w-full h-full object-cover transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105"
+          autoPlay
+          muted
+          loop
+          playsInline // Essential for autoplay on iOS devices
+        />
+      </div>
     </section>
   );
 };
