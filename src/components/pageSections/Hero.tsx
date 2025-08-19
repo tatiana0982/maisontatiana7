@@ -17,13 +17,13 @@ const Hero: React.FC = () => {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-white">
       <video
-        src={videoSrc}
-        className="w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/bg_poster.png"
+      src={videoSrc}
+      className="w-full h-full object-cover"
+      autoPlay
+      muted
+      loop
+      playsInline
+      poster={isMobile ? "/images/bg_poster_mobile.png" : "/images/bg_poster.png"}
       />
     </section>
   );
