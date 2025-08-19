@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
         muted
         loop
         playsInline
-        poster="/images/img_whatsapp_video_2025_08_15.png"
+        poster="/images/bg_poster.png"
       />
     </section>
   );

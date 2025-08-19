@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
   return (
     <footer 
       className="w-full bg-cover bg-center bg-no-repeat mt-16 lg:mt-24"
-      style={{ backgroundImage: "url('/images/img_image_1.png')" }}
+      style={{ backgroundImage: "url('/images/footer_bg.png')" }}
     >
       <div className="w-full max-w-screen-2xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="bg-white rounded-lg p-6 lg:p-12">

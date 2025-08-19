@@ -9,7 +9,7 @@ const FragrantGetaway: React.FC = () => {
     >
       <div className="transform-gpu transition-transform duration-500 ease-luxury group-hover:scale-105 h-full">
         <Image
-          src="/images/img_untitled_design_2_1.png"
+          src="/images/5_bottles.png"
           width={1920}
           height={960}
           alt="A collection of five Maison Tatiana 7 perfume bottles"

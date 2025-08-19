@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 
 const fragrances = [
-  { src: "/images/img_img_20250811_wa0020.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses" },
-  { src: "/images/img_img_20250811_wa0016.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana" },
-  { src: "/images/img_img_20250811_wa0019.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge" },
+  { src: "/images/7_lucky_roses_simple.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses" },
+  { src: "/images/the_garden_of_tatiana_simple.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana" },
+  { src: "/images/king_of_burn_bridge_simple.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge" },
 ];
 
 const SignatureFragrances: React.FC = () => {

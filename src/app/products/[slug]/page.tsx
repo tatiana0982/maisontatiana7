@@ -13,9 +13,8 @@ const allProducts = [
         name: 'The 7 Lucky Roses', 
         slug: 'the-7-lucky-roses', 
         images: [
-            '/images/img_img_20250811_wa0020.png', 
-            '/images/img_luxury_perfume_video_creation.png',
-            '/images/img_img_0036.png'
+            '/images/7_lucky_roses.png', 
+            '/images/7_lucky_roses_simple.png',
         ],
         price: 120.00,
         originalPrice: 180.00,
@@ -25,9 +24,52 @@ const allProducts = [
         name: 'The Garden of Tatiana', 
         slug: 'the-garden-of-tatiana', 
         images: [
-            '/images/img_img_20250811_wa0016.png',
-            '/images/img_ebd184ad_1661_4.png',
-            '/images/img_img_0036.png'
+            '/images/the_garden_of_tatiana_simple.png',
+            '/images/the_garden_of_tatiana_model.jpeg',
+            '/images/the_garden_of_tatiana.png'
+        ],
+        price: 120.00,
+        originalPrice: 250.00,
+        description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
+    },
+        { 
+        name: 'King of Burn Bridge', 
+        slug: 'king-of-burn-bridge', 
+        images: [
+            '/images/king_of_burn_bridge_simple.png',
+            '/images/the_garden_of_tatiana.png'
+        ],
+        price: 120.00,
+        originalPrice: 250.00,
+        description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
+    },
+        { 
+        name: 'Covenant of Kings', 
+        slug: 'covenant-of-kings', 
+        images: [
+            '/images/convenant_of_kings.png',
+            '/images/convenant_of_kings_simple.png'
+        ],
+        price: 120.00,
+        originalPrice: 250.00,
+        description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
+    },
+        { 
+        name: 'Divine Armor', 
+        slug: 'divine-armor', 
+        images: [
+            '/images/divine_armor.png',
+        ],
+        price: 120.00,
+        originalPrice: 250.00,
+        description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
+    },
+        { 
+        name: 'Create Singnature Fragrance', 
+        slug: 'create-signature-fragrance', 
+        images: [
+            '/images/create_fragrance.png',
+            '/images/create_fragrance_simple.png'
         ],
         price: 200.00,
         originalPrice: 250.00,
@@ -119,11 +161,13 @@ const ProductDetailPage = ({ params }: { params: { slug: string } }) => {
               <div className="my-8 space-y-4 text-sm text-gray-500">
                 <div className="flex items-center gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-brand-gold" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" /></svg>
-                  <span>Estimated Delivery: 2-3 Business Days</span>
+                  <span>Estimated Delivery: 7-14 Business Days</span>
                 </div>
                  <div className="flex items-center gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-brand-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fillRule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2-2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" /></svg>
-                  <span>Complimentary samples with every order</span>
+<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-brand-gold" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M4 7h12v3H4V7zm0 4h5v6H4v-6zm7 0h5v6h-5v-6zM7 3a1 1 0 000 2h1v2h2V5h1a1 1 0 100-2c-.5 0-1 .5-2 2-1-1.5-1.5-2-2-2z" />
+</svg>
+                  <span>Receive a surprise gift with every order</span>
                 </div>
               </div>
 

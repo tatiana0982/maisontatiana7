@@ -3,11 +3,11 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 
 const carouselProducts = [
-  { src: "/images/img_img_20250811_wa0017.png", alt: "Covenant of Kings perfume", name: "Covenant of Kings", price: "120.00 €" },
-  { src: "/images/img_img_20250811_wa0018.png", alt: "Divine Armor perfume", name: "Divine Armor", price: "120.00 €" },
-  { src: "/images/img_img_20250811_wa0016.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana", price: "120.00 €" },
-  { src: "/images/img_img_20250811_wa0019.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge", price: "120.00 €" },
-  { src: "/images/img_img_20250811_wa0020.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses", price: "120.00 €" },
+  { src: "/images/convenant_of_kings_1.png", alt: "Covenant of Kings perfume", name: "Covenant of Kings", price: "120.00 €" },
+  { src: "/images/divine_armor.png", alt: "Divine Armor perfume", name: "Divine Armor", price: "120.00 €" },
+  { src: "/images/the_garden_of_tatiana_simple.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana", price: "120.00 €" },
+  { src: "/images/king_of_burn_bridge_simple.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge", price: "120.00 €" },
+  { src: "/images/7_lucky_roses_simple.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses", price: "120.00 €" },
 ];
 
 const Collection: React.FC = () => {
@@ -77,7 +77,7 @@ const Collection: React.FC = () => {
       */}
       <div className="w-full max-w-md mx-auto lg:w-1/3 lg:max-w-none lg:mx-0">
         <Image 
-          src="/images/img_ebd184ad_1661_4.png" 
+          src="/images/the_garden_of_tatiana_model.jpeg" 
           width={550} 
           height={964} 
           alt="Model with The Garden of Tatiana perfume" 

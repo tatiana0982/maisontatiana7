@@ -14,12 +14,12 @@ const navLinks = [
 ];
 
 const products = [
-    { name: 'The 7 Lucky Roses', slug: 'the-7-lucky-roses', image: '/images/img_img_20250811_wa0020.png', price: '120.00 €' },
-    { name: 'The Garden of Tatiana', slug: 'the-garden-of-tatiana', image: '/images/img_img_20250811_wa0016.png', price: '120.00 €' },
-    { name: 'King of Burn Bridge', slug: 'king-of-burn-bridge', image: '/images/img_img_20250811_wa0019.png', price: '120.00 €' },
-    { name: 'Covenant of Kings', slug: 'covenant-of-kings', image: '/images/img_img_20250811_wa0017.png', price: '120.00 €' },
-    { name: 'Divine Armor', slug: 'divine-armor', image: '/images/img_img_20250811_wa0018.png', price: '120.00 €' },
-    { name: 'Le Ciel de Tatiana', slug: 'le-ciel-de-tatiana', image: '/images/img_img_0043.png', price: '120.00 €' },
+    { name: 'The 7 Lucky Roses', slug: 'the-7-lucky-roses', image: '/images/7_lucky_roses_simple.png', price: '120.00 €' },
+    { name: 'The Garden of Tatiana', slug: 'the-garden-of-tatiana', image: '/images/the_garden_of_tatiana_simple.png', price: '120.00 €' },
+    { name: 'King of Burn Bridge', slug: 'king-of-burn-bridge', image: '/images/king_of_burn_bridge_simple.png', price: '120.00 €' },
+    { name: 'Covenant of Kings', slug: 'covenant-of-kings', image: '/images/convenant_of_kings_1.png', price: '120.00 €' },
+    { name: 'Divine Armor', slug: 'divine-armor', image: '/images/divine_armor.png', price: '120.00 €' },
+    { name: 'Create Singnature Fragrance', slug: 'create-signature-fragrance', image: '/images/create_fragrance_simple.png', price: '200.00 €' },
 ];
 
 const ProductsPage = () => {
@@ -111,7 +111,7 @@ const ProductsPage = () => {
         <section className="animate-on-scroll w-full mt-16 lg:mt-24 h-[60vh] lg:h-auto">
           <div className="group overflow-hidden h-full">
             <Image
-              src="/images/img_untitled_design_2_1.png"
+              src="/images/5_bottles.png"
               width={1920}
               height={960}
               alt="A collection of five Maison Tatiana 7 perfume bottles"

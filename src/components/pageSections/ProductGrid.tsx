@@ -2,10 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 
 const products = [
-  { src: "/images/img_img_0037.png", alt: "Perfume bottle in a black box" },
-  { src: "/images/img_img_0043.png", alt: "Covenant of Kings perfume on a marble background" },
-  { src: "/images/img_img_0034.png", alt: "Covenant of Kings perfume on a white cloth background" },
-  { src: "/images/img_img_0036.png", alt: "The Garden of Tatiana perfume with a floral background" },
+  { src: "/images/create_fragrance.png", alt: "Perfume bottle in a black box" },
+  { src: "/images/convenant_of_kings.png", alt: "Covenant of Kings perfume on a marble background" },
+  { src: "/images/convenant_of_kings_simple.png", alt: "Covenant of Kings perfume on a white cloth background" },
+  { src: "/images/the_garden_of_tatiana.png", alt: "The Garden of Tatiana perfume with a floral background" },
 ];
 
 const ProductGrid: React.FC = () => {

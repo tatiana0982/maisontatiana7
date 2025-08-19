@@ -27,7 +27,7 @@ const LArtDuParfum: React.FC = () => {
         <div className="order-1 lg:order-2 px-4 sm:px-6 lg:p-0">
           <div className="group overflow-hidden max-w-sm mx-auto sm:max-w-md lg:max-w-none lg:mx-0">
             <Image 
-              src="/images/img_img_0444_1.png" 
+              src="/images/divine_armor_model.png" 
               width={800} 
               height={970} 
               alt="Perfume bottle with a model" 

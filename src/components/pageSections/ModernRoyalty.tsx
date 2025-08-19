@@ -16,7 +16,7 @@ const ModernRoyalty: React.FC = () => {
         {/* Image Container - Now constrained on smaller screens */}
         <div className="group overflow-hidden px-4 sm:px-8 lg:px-0">
           <Image 
-            src="/images/img_luxury_perfume_video_creation.png" 
+            src="/images/7_lucky_roses.png" 
             width={800} 
             height={796} 
             alt="Luxury perfume with pink roses" 
