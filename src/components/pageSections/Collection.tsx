@@ -1,13 +1,14 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const carouselProducts = [
-  { src: "/images/convenant_of_kings_1.png", alt: "Covenant of Kings perfume", name: "Covenant of Kings", price: "120.00 €" },
-  { src: "/images/divine_armor.png", alt: "Divine Armor perfume", name: "Divine Armor", price: "120.00 €" },
-  { src: "/images/the_garden_of_tatiana_simple.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana", price: "120.00 €" },
-  { src: "/images/king_of_burn_bridge_simple.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge", price: "120.00 €" },
-  { src: "/images/7_lucky_roses_simple.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses", price: "120.00 €" },
+  { src: "/images/convenant_of_kings_1.png", alt: "Covenant of Kings perfume", name: "Covenant of Kings", price: "120.00 €", href: "/products/covenant-of-kings" },
+  { src: "/images/divine_armor.png", alt: "Divine Armor perfume", name: "Divine Armor", price: "120.00 €", href: "/products/divine-armor" },
+  { src: "/images/the_garden_of_tatiana_simple.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana", price: "120.00 €", href: "/products/the-garden-of-tatiana" },
+  { src: "/images/king_of_burn_bridge_simple.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge", price: "120.00 €", href: "/products/king-of-burn-bridge" },
+  { src: "/images/7_lucky_roses_simple.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses", price: "120.00 €", href: "/products/the-7-lucky-roses" },
 ];
 
 const Collection: React.FC = () => {
@@ -17,13 +18,14 @@ const Collection: React.FC = () => {
   const [startTranslate, setStartTranslate] = useState(0);
   const [currentTranslate, setCurrentTranslate] = useState(0);
   const prevTranslateRef = useRef(0);
+  const wasDragging = useRef(false);
 
-  // Drag-to-scroll logic (remains unchanged)
   const getTrackWidth = () => trackRef.current?.scrollWidth ?? 0;
   const getVisibleWidth = () => trackRef.current?.clientWidth ?? 0;
 
   const handleInteractionStart = (clientX: number) => {
     setIsDragging(true);
+    wasDragging.current = false;
     setStartX(clientX);
     setStartTranslate(currentTranslate);
     if (trackRef.current) {
@@ -34,6 +36,7 @@ const Collection: React.FC = () => {
 
   const handleInteractionMove = (clientX: number) => {
     if (!isDragging) return;
+    wasDragging.current = true;
     const dragDistance = clientX - startX;
     const newTranslate = startTranslate + dragDistance;
     const maxTranslate = 0;
@@ -43,13 +46,13 @@ const Collection: React.FC = () => {
 
   const handleInteractionEnd = () => {
     setIsDragging(false);
-    prevTranslateRef.current = currentTranslate;
     if (trackRef.current) {
       trackRef.current.style.cursor = 'grab';
       trackRef.current.style.transition = 'transform 0.5s ease-out';
     }
+    prevTranslateRef.current = currentTranslate;
   };
-  
+
   const handleMouseDown = (e: React.MouseEvent) => handleInteractionStart(e.pageX);
   const handleMouseMove = (e: React.MouseEvent) => handleInteractionMove(e.pageX);
   const handleTouchStart = (e: React.TouchEvent) => handleInteractionStart(e.touches[0].clientX);
@@ -66,15 +69,8 @@ const Collection: React.FC = () => {
     prevTranslateRef.current = clampedTranslate;
   };
 
-
   return (
     <section className="animate-on-scroll flex flex-col lg:flex-row w-full mt-12 lg:mt-24">
-      {/* CORRECTED: The image container is now constrained on mobile screens.
-        - `w-full` takes up the full width on small screens.
-        - `max-w-md` prevents it from becoming too large on tablets.
-        - `mx-auto` centers it horizontally.
-        - `lg:w-1/3` and `lg:max-w-none` restore the original desktop layout.
-      */}
       <div className="w-full max-w-md mx-auto lg:w-1/3 lg:max-w-none lg:mx-0">
         <Image 
           src="/images/the_garden_of_tatiana_model.jpeg" 
@@ -107,22 +103,30 @@ const Collection: React.FC = () => {
             >
               {carouselProducts.map((product, index) => (
                 <div key={index} className="flex-shrink-0 w-1/2 md:w-[45%] lg:w-[40%] px-4 select-none">
-                  <div className="flex flex-col h-full">
-                    <div className="aspect-w-1 aspect-h-1 bg-gray-50 rounded-lg overflow-hidden">
-                      <Image 
-                        src={product.src}
-                        width={400} 
-                        height={400} 
-                        alt={product.alt}
-                        className="w-full h-full object-cover"
-                        draggable="false"
-                      />
+                  <Link 
+                    href={product.href} 
+                    onClick={(e) => {
+                      if (wasDragging.current) e.preventDefault();
+                    }}
+                    className="block h-full"
+                  >
+                    <div className="flex flex-col h-full">
+                      <div className="aspect-w-1 aspect-h-1 bg-gray-50 rounded-lg overflow-hidden">
+                        <Image 
+                          src={product.src}
+                          width={400} 
+                          height={400} 
+                          alt={product.alt}
+                          className="w-full h-full object-cover"
+                          draggable="false"
+                        />
+                      </div>
+                      <div className="mt-4 text-center">
+                        <p className="font-hellix text-black text-xl">{product.name}</p>
+                        <p className="text-gray-600 mt-1">{product.price}</p>
+                      </div>
                     </div>
-                    <div className="mt-4 text-center">
-                      <p className="font-hellix text-black text-xl">{product.name}</p>
-                      <p className="text-gray-600 mt-1">{product.price}</p>
-                    </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>

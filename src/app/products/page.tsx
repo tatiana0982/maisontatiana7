@@ -80,7 +80,7 @@ const ProductsPage = () => {
           <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 items-center gap-12">
             <div className="group overflow-hidden">
                 <Image 
-                    src="/images/img_luxury_perfume.png"
+                    src="/images/bg_poster.png"
                     width={800}
                     height={600}
                     alt="Close up of a luxury perfume bottle"
