@@ -33,7 +33,6 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="overflow-x-hidden">
         {children}        
-<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Funiverses4507back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
 </body>
     </html>
   );
