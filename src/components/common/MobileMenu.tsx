@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect } from 'react';
+import Link from 'next/link'; // Import Link
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,30 +10,15 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navLinks }) => {
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    return () => { document.body.style.overflow = 'auto'; };
   }, [isOpen]);
 
   return (
-    <div className={`fixed inset-0 z-[100] transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-      {/* Glassmorphism Overlay */}
-      <div 
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm" 
-        onClick={onClose}
-      ></div>
-
-      {/* Menu Panel */}
-      <div 
-        className={`relative w-full max-w-md h-full bg-white shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
-      >
+    <div className={`fixed inset-0 z-[100] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose}></div>
+      <div className={`relative w-full max-w-md h-full bg-white shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
-          {/* Menu Header with Close Button */}
           <div className="flex items-center p-5 border-b border-gray-200">
             <button onClick={onClose} aria-label="Close menu" className="p-2">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -41,18 +27,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navLinks }) =>
               </svg>
             </button>
           </div>
-          
-          {/* Navigation Links */}
           <nav className="flex flex-col p-8 space-y-6">
             {navLinks.map((link, index) => (
-              <a 
+              <Link 
                 key={link.name} 
                 href={link.href} 
                 className="text-black text-2xl font-light font-atacama tracking-wider hover:opacity-70 transition-opacity duration-300"
                 style={{ animation: `fadeInUp 0.6s ${0.1 * index}s ease forwards`, opacity: 0 }}
+                onClick={onClose} // Close menu on link click
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

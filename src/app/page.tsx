@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/common/Header';
-import MobileMenu from '@/components/common/MobileMenu'; // Import MobileMenu here
+import MobileMenu from '@/components/common/MobileMenu';
 import Hero from '@/components/pageSections/Hero';
 import LArtDuParfum from '@/components/pageSections/LArtDuParfum';
 import FragrantGetaway from '@/components/pageSections/FragrantGetaway';
@@ -14,11 +14,12 @@ import WebsiteLink from '@/components/pageSections/WebsiteLink';
 import FinalImage from '@/components/pageSections/FinalImage';
 import Footer from '@/components/common/Footer';
 
+// CORRECTED: The href values now point to the correct pages.
 const navLinks = [
-  { name: 'Shop', href: '#' },
-  { name: 'Collections', href: '#' },
-  { name: 'Our Story', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Shop', href: '/products' },
+  { name: 'Collections', href: '/products' },
+  { name: 'Our Story', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const MaisonTatianaPage: React.FC = () => {
@@ -44,7 +45,7 @@ const MaisonTatianaPage: React.FC = () => {
       <Header onMenuOpen={() => setIsMenuOpen(true)} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} navLinks={navLinks} />
       
-      <main className="pt-[136px]">
+      <main>
         <Hero />
         <LArtDuParfum />
         <FragrantGetaway />
