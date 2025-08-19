@@ -46,7 +46,24 @@
   }
 }
 /* --- END OF NEW ANIMATION --- */
+
+/* --- NEW LUXURY QUOTE STYLE --- */
+  .luxury-quote {
+    @apply relative text-center;
+  }
+  .luxury-quote::before, .luxury-quote::after {
+    @apply absolute text-6xl lg:text-7xl font-serif text-brand-gold opacity-30;
+    content: '“';
+  }
+  .luxury-quote::before {
+    @apply top-0 left-0 -translate-x-4;
+  }
+  .luxury-quote::after {
+    content: '”';
+    @apply bottom-0 right-0 translate-x-4 translate-y-8;
+  }
 }
+
 
  /* --- ADDED UTILITY TO HIDE SCROLLBAR --- */
   .no-scrollbar::-webkit-scrollbar {

@@ -20,6 +20,9 @@ module.exports = {
         },
         button: {
           background1: "var(--button-bg-1)"
+        },
+        brand: {
+          gold: '#BFA575', // A subtle, elegant gold for luxury text
         }
       },
       fontFamily: {
