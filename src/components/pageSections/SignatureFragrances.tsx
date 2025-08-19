@@ -36,7 +36,7 @@ const SignatureFragrances: React.FC = () => {
             </h3>
             
             {/* "Discover" link with the correct underline wipe animation */}
-            <a href="#" className="text-base lg:text-lg font-inria text-black hover-underline-wipe">
+            <a href="/products" className="text-base lg:text-lg font-inria text-black hover-underline-wipe">
               Discover
             </a>
           </div>

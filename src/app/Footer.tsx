@@ -170,14 +170,10 @@ const Footer: React.FC = () => {
               <Logo />
             </div>
             <div className="order-2 lg:order-3 flex flex-col items-center gap-3">
-                <p className="text-xs text-gray-500">Worldwide Payments</p>
-                <div className="flex items-center gap-3">
-                    <Image src="/images/z_visa.png" width={35} height={23} alt="Visa"/>
-                    <Image src="/images/z_mastercard.png" width={35} height={23} alt="Mastercard"/>
-                    <Image src="/images/z_discover.png" width={35} height={23} alt="Discover"/>
-                    <Image src="/images/z_american_express.png" width={35} height={23} alt="American Express"/>
-                    <Image src="/images/z_paypal.png" width={35} height={23} alt="PayPal"/>
-                </div>
+              <p className="text-xs text-gray-500">Worldwide Payments</p>
+              <div className="flex items-center gap-3">
+                <Image src="/images/payment.png" width={180} height={23} alt="Payment Methods"/>
+              </div>
             </div>
           </div>
 

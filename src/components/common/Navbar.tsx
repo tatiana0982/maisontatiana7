@@ -14,13 +14,15 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuOpen }) => {
       <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Left: Mobile Menu Button */}
-          <div className="w-1/3 flex justify-start">
+            <div className="w-1/3 flex justify-start">
             <button onClick={onMenuOpen} className="menu-button p-2" aria-label="Open menu">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img
+              src="/images/img_frame.svg"
+              alt="Menu"
+              className="h-8 w-8 lg:h-12 lg:w-12"
+              />
             </button>
-          </div>
+            </div>
 
           {/* Center: Logo Component */}
           <div className="w-1/3 flex justify-center">
