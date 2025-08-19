@@ -5,6 +5,16 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+    // --- ADDED THIS SECTION TO ALLOW EXTERNAL IMAGES ---
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+  // --- END OF ADDED SECTION ---
   webpack(config) {
     config.module.rules.push({
       test: /\.(jsx|tsx)$/,
