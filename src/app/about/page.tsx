@@ -114,7 +114,7 @@ const AboutPage = () => {
         {/* --- Autoplaying Video Section --- */}
         <section className="animate-on-scroll relative w-full h-[70vh] lg:h-[90vh] mt-16 lg:mt-24 overflow-hidden bg-black">
           <video
-            src="/videos/hero_video1.mp4"
+            src="/videos/hero_video3.mp4"
             className="w-full h-full object-cover opacity-50"
             autoPlay
             muted

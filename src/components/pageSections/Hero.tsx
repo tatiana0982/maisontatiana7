@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
 
   const videoSrc = isMobile
     ? '/videos/hero_video2.mp4'
-    : '/videos/hero_video1.mp4';
+    : '/videos/hero_video3.mp4';
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-white">
