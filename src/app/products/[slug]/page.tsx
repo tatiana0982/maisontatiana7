@@ -32,17 +32,17 @@ const allProducts = [
         originalPrice: 250.00,
         description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
     },
-        { 
-        name: 'King of Burn Bridge', 
-        slug: 'king-of-burn-bridge', 
-        images: [
-            '/images/king_of_burn_bridge_simple.png',
-            '/images/the_garden_of_tatiana.png'
-        ],
-        price: 120.00,
-        originalPrice: 250.00,
-        description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
-    },
+    //     { 
+    //     name: 'King of Burn Bridge', 
+    //     slug: 'king-of-burn-bridge', 
+    //     images: [
+    //         '/images/king_of_burn_bridge_simple.png',
+    //         '/images/the_garden_of_tatiana.png'
+    //     ],
+    //     price: 120.00,
+    //     originalPrice: 250.00,
+    //     description: 'Step into an enchanted garden where rare blossoms and exotic spices intertwine. The Garden of Tatiana is a complex, sophisticated fragrance that unfolds in layers, revealing notes of jasmine, oud, and a hint of saffron. It is a scent for the confident soul who leaves a memorable trail.'
+    // },
         { 
         name: 'Covenant of Kings', 
         slug: 'covenant-of-kings', 

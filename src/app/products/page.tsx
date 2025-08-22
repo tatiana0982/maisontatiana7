@@ -16,7 +16,7 @@ const navLinks = [
 const products = [
     { name: 'The 7 Lucky Roses', slug: 'the-7-lucky-roses', image: '/images/7_lucky_roses_simple.png', price: '120.00 €' },
     { name: 'The Garden of Tatiana', slug: 'the-garden-of-tatiana', image: '/images/the_garden_of_tatiana_simple.png', price: '120.00 €' },
-    { name: 'King of Burn Bridge', slug: 'king-of-burn-bridge', image: '/images/king_of_burn_bridge_simple.png', price: '120.00 €' },
+    // { name: 'King of Burn Bridge', slug: 'king-of-burn-bridge', image: '/images/king_of_burn_bridge_simple.png', price: '120.00 €' },
     { name: 'Covenant of Kings', slug: 'covenant-of-kings', image: '/images/convenant_of_kings_1.png', price: '120.00 €' },
     { name: 'Divine Armor', slug: 'divine-armor', image: '/images/divine_armor.png', price: '120.00 €' },
     { name: 'Create Singnature Fragrance', slug: 'create-signature-fragrance', image: '/images/create_fragrance_simple.png', price: '200.00 €' },
