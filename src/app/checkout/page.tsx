@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent } from 'react';
+import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Header from '../../components/common/Header';
-import Footer from '../../components/common/Footer';
-import Button from '../../components/ui/Button';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
+import Button from '@/components/ui/Button';
 
 // --- Type Definitions ---
 type BankDetails = {
@@ -24,23 +24,20 @@ type ProductDetails = {
 };
 
 // --- Helper Components ---
-
-// Back Button SVG Icon
 const ArrowLeftIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
     </svg>
 );
 
-// File Upload Icon
 const UploadCloudIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
     </svg>
 );
 
-// --- Main Checkout Page Component ---
-export default function CheckoutPage() {
+// --- Client-Side Checkout Logic Component ---
+function CheckoutComponent() {
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -330,6 +327,19 @@ export default function CheckoutPage() {
 
             <Footer />
         </div>
+    );
+}
+
+// --- Main Page Component with Suspense Boundary ---
+export default function CheckoutPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex items-center justify-center min-h-screen bg-gray-50">
+                <p className="text-gray-600">Loading Checkout...</p>
+            </div>
+        }>
+            <CheckoutComponent />
+        </Suspense>
     );
 }
 
