@@ -5,16 +5,18 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-    // --- ADDED THIS SECTION TO ALLOW EXTERNAL IMAGES ---
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+       {
+        protocol: 'https',
+        hostname: 'admin.maisontatiana7worldwide.com',
+      },
     ],
   },
-  // --- END OF ADDED SECTION ---
   webpack(config) {
     config.module.rules.push({
       test: /\.(jsx|tsx)$/,
@@ -26,4 +28,5 @@ const nextConfig = {
     return config;
   },
 };
+
 export default nextConfig;
