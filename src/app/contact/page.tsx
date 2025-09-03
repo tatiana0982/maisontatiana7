@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import MobileMenu from '@/components/common/MobileMenu';
-import Image from 'next/image';
 import EditText from '@/components/ui/EditText';
 import Button from '@/components/ui/Button';
 
@@ -59,7 +58,7 @@ const ContactPage = () => {
       } else {
         setResponseMessage('Something went wrong. Please try again.');
       }
-    } catch (err) {
+    } catch {
       setResponseMessage('Error sending message. Please check your connection.');
     } finally {
       setLoading(false);
@@ -81,7 +80,6 @@ const ContactPage = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Contact Form */}
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <EditText
@@ -117,8 +115,11 @@ const ContactPage = () => {
               />
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Message
+                </label>
                 <textarea
+                  id="message"
                   rows={8}
                   placeholder="How can we help you?"
                   className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:border-black transition-shadow duration-300"
@@ -138,13 +139,12 @@ const ContactPage = () => {
               </Button>
 
               {responseMessage && (
-                <div className="mt-4 text-center text-sm text-gray-700">
+                <div className="mt-4 text-center text-sm text-gray-700" role="alert">
                   {responseMessage}
                 </div>
               )}
             </form>
 
-            {/* Google Map */}
             <div className="w-full h-full min-h-[400px] lg:min-h-0">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d231268.3036283553!2d55.08832551942787!3d25.07575844436214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1724073351988!5m2!1sen!2sin"
