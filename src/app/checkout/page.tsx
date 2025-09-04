@@ -3,9 +3,9 @@
 import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Header from '@/components/common/Header';
-import Footer from '@/components/common/Footer';
-import Button from '@/components/ui/Button';
+import Header from '../../components/common/Header';
+import Footer from '../../components/common/Footer';
+import Button from '../../components/ui/Button';
 
 // --- Type Definitions ---
 type BankDetails = {
@@ -214,7 +214,7 @@ function CheckoutComponent() {
         <div className="bg-gray-50 min-h-screen font-sans text-gray-800">
             <Header onMenuOpen={() => setIsMenuOpen(true)} />
             
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
                 <div className="mb-8">
                     <button onClick={() => router.back()} className="flex items-center gap-2 text-sm text-gray-600 hover:text-black transition-colors duration-300">
                         <ArrowLeftIcon />
