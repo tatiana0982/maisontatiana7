@@ -85,7 +85,7 @@ const AboutPage = () => {
                     <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                         "We don't create perfumes; we craft <b className="font-semibold text-brand-gold">liquid poetry</b>. Each bottle holds a narrative, a bridge between two worlds. It is the whisper of a <i className="font-serif">French love affair</i> and the echo of an <i className="font-serif">Arabian night</i>."
                     </p>
-                    <cite className="block mt-8 text-md text-gray-400 not-italic">~ Tatiana, Founder</cite>
+                    <cite className="block mt-8 text-md text-gray-400 not-italic">~ Maison Tatiana 7 </cite>
                 </blockquote>
             </div>
         </section>
