@@ -185,6 +185,7 @@ const handleBuyNow = () => {
                   <span>Receive a surprise gift with every order</span>
                 </div>
               </div>
+              
 
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <div className="flex items-center border border-gray-300 rounded-md">
@@ -235,6 +236,8 @@ const handleBuyNow = () => {
                     />
                   </svg>
                   <span>Secure Payments</span>
+                <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000000" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M53.79,40.85a23.82,23.82,0,0,1-2.63,4.78A23.51,23.51,0,0,1,8.87,36.22" stroke-linecap="round"></path><path d="M10.37,22.77A23.51,23.51,0,0,1,55.1,27.64" stroke-linecap="round"></path><polyline points="45.9 22.36 55.23 28.02 60.45 19.22" stroke-linecap="round"></polyline><polyline points="17.99 41.2 8.66 35.53 3.44 44.34" stroke-linecap="round"></polyline><path d="M40.32,43.14H24.79a.12.12,0,0,1-.1-.2c1.06-1.14,6.15-7,4.2-12.19-2.16-5.84-.76-15.11,9.72-10.8" stroke-linecap="round"></path><line x1="22.33" y1="30.9" x2="36.83" y2="30.9" stroke-linecap="round"></line></g></svg>
+                  <span>No Refunds Policy</span>
                 </div>
               </div>
             </div>
