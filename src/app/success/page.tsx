@@ -2,7 +2,7 @@
 
 'use client';
 
-import Player from 'lottie-react';
+import Lottie from 'lottie-react'; // Corrected import from 'Player' to 'Lottie'
 
 import successAnimation from '@/../public/lottie/success.json';
 import Link from 'next/link';
@@ -10,12 +10,12 @@ import Link from 'next/link';
 export default function SuccessPage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
-      <div className="w-40 h-40 mb-6">
-        <Player
-          autoplay
-          loop={true} // Changed to true for infinite loop
+      {/* Increased the container size for better visibility */}
+      <div className="w-64 h-64 mb-6">
+        <Lottie
           animationData={successAnimation}
-          style={{ height: '100%', width: '100%' }}
+          loop={true}
+          autoplay={true}
         />
       </div>
 
