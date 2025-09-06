@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const carouselProducts = [
-  { src: "/images/convenant_of_kings_1.png", alt: "Covenant of Kings perfume", name: "Covenant of Kings", price: "120.00 €", href: "/products/covenant-of-kings" },
-  { src: "/images/divine_armor.png", alt: "Divine Armor perfume", name: "Divine Armor", price: "120.00 €", href: "/products/divine-armor" },
-  { src: "/images/the_garden_of_tatiana_simple.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana", price: "120.00 €", href: "/products/the-garden-of-tatiana" },
-  { src: "/images/king_of_burn_bridge_simple.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge", price: "120.00 €", href: "/products/king-of-burn-bridge" },
-  { src: "/images/7_lucky_roses_simple.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses", price: "120.00 €", href: "/products/the-7-lucky-roses" },
+  { src: "/images/convenant_of_kings_1.png", alt: "Covenant of Kings perfume", name: "Covenant of Kings", price: "120.00 €", href: "/products" },
+  { src: "/images/divine_armor.png", alt: "Divine Armor perfume", name: "Divine Armor", price: "120.00 €", href: "/products" },
+  { src: "/images/the_garden_of_tatiana_simple.png", alt: "The Garden of Tatiana perfume", name: "The Garden of Tatiana", price: "120.00 €", href: "/products" },
+  { src: "/images/king_of_burn_bridge_simple.png", alt: "King of Burn Bridge perfume", name: "King of Burn Bridge", price: "120.00 €", href: "/products" },
+  { src: "/images/7_lucky_roses_simple.png", alt: "The 7 Lucky Roses perfume", name: "The 7 Lucky Roses", price: "120.00 €", href: "/products" },
 ];
 
 const Collection: React.FC = () => {
