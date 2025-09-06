@@ -1,29 +1,40 @@
 'use client';
-import Header from '@/components/common/Header';
-import Footer from '@/components/common/Footer';
-import MobileMenu from '@/components/common/MobileMenu';
-import Image from 'next/image';
-import Link from 'next/link';
+
 import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent, Suspense } from 'react';
 
-const navLinks = [
-    { name: 'Shop', href: '/products' },
-    { name: 'Collections', href: '/products' },
-    { name: 'Our Story', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-];
+// --- Mock Components to resolve import errors ---
+// In a real project, you would import these from your component library.
+const Header = ({ onMenuOpen }: { onMenuOpen: () => void }) => (
+    <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <div className="font-bold text-2xl font-serif">Maison Tatiana 7</div>
+            <button onClick={onMenuOpen} className="lg:hidden">Menu</button>
+        </div>
+    </header>
+);
+
+const Footer = () => (
+    <footer className="bg-gray-800 text-white p-8 mt-16">
+        <div className="max-w-7xl mx-auto text-center">
+            <p>&copy; 2024 Maison Tatiana 7. All rights reserved.</p>
+        </div>
+    </footer>
+);
 
 const Button = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement> & { size?: string; className?: string }) => (
     <button {...props} className={`px-6 py-3 rounded-md font-semibold transition-colors duration-300 ${props.className}`}>
         {children}
     </button>
 );
+
+
 // --- Type Definitions ---
 type BankDetails = {
     account_number: string;
     account_name: string;
     ifsc_code: string;
 };
+
 type ProductDetails = {
     id: string;
     title: string;
@@ -32,6 +43,7 @@ type ProductDetails = {
         image_path: string;
     };
 };
+
 type FormState = {
     email: string;
     name: string;
@@ -42,6 +54,7 @@ type FormState = {
     zip_code: string;
     address_line: string;
 };
+
 type OrderDetails = {
     orderId: string;
     product: ProductDetails;
@@ -49,6 +62,7 @@ type OrderDetails = {
     shippingInfo: FormState;
     orderDate: string;
 };
+
 
 // --- Helper Components ---
 const ArrowLeftIcon = () => (
@@ -77,26 +91,16 @@ const CheckCircleIcon = () => (
 
 // --- NEW: Order Receipt Component ---
 const OrderReceiptComponent = ({ orderDetails, onContinue }: { orderDetails: OrderDetails, onContinue: () => void }) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const handlePrint = () => window.print();
-    const SHIPPING_COST = 35;
 
     const { orderId, product, quantity, shippingInfo, orderDate } = orderDetails;
-    const subtotal = parseFloat(product.price) * quantity;
-    const totalPrice = (subtotal + SHIPPING_COST).toFixed(2);
-
+    const totalPrice = (parseFloat(product.price) * quantity).toFixed(2);
     const formattedDate = new Date(orderDate).toLocaleDateString('en-US', {
         year: 'numeric', month: 'long', day: 'numeric'
     });
 
     return (
         <>
-        <Header onMenuOpen={() => setIsMenuOpen(true)} />
-            <MobileMenu 
-                isOpen={isMenuOpen} 
-                onClose={() => setIsMenuOpen(false)} 
-                navLinks={navLinks} 
-            />
             <style jsx global>{`
                 @media print {
                     body * { visibility: hidden; }
@@ -146,17 +150,17 @@ const OrderReceiptComponent = ({ orderDetails, onContinue }: { orderDetails: Ord
                                         <h3 className="font-semibold">{product.title}</h3>
                                         <p className="text-sm text-gray-600">Quantity: {quantity}</p>
                                     </div>
-                                    <p className="font-semibold">€{subtotal.toFixed(2)}</p>
+                                    <p className="font-semibold">€{totalPrice}</p>
                                 </div>
                             </div>
                             <div className="mt-6 space-y-3">
                                 <div className="flex justify-between text-gray-600">
                                     <span>Subtotal</span>
-                                    <span>€{subtotal.toFixed(2)}</span>
+                                    <span>€{totalPrice}</span>
                                 </div>
                                 <div className="flex justify-between text-gray-600">
                                     <span>Shipping</span>
-                                    <span>€{SHIPPING_COST.toFixed(2)}</span>
+                                    <span>Free</span>
                                 </div>
                                 <div className="flex justify-between text-xl font-bold text-gray-800 border-t pt-4 mt-3">
                                     <span>Total Paid</span>
@@ -199,7 +203,6 @@ const SuccessComponent = () => (
 
 // --- Checkout Logic Component (Main Logic) ---
 function CheckoutComponent() {
-    const SHIPPING_COST = 35;
     // --- State Management ---
     const [pageState, setPageState] = useState<'checkout' | 'receipt' | 'success'>('checkout');
     const [latestOrderDetails, setLatestOrderDetails] = useState<OrderDetails | null>(null);
@@ -220,7 +223,6 @@ function CheckoutComponent() {
     const [paymentMethod, setPaymentMethod] = useState<'bank' | 'blockchain'>('bank');
     const [blockchainType, setBlockchainType] = useState<'eth' | 'usdt' | null>(null);
     const [showQrModal, setShowQrModal] = useState(false);
-    const [copied, setCopied] = useState(false);
 
     const blockchainOptions = [
         {
@@ -253,7 +255,7 @@ function CheckoutComponent() {
 
         async function fetchData() {
             try {
-                const productRes = await fetch(`https://admin.maisontatiana7worldwide.com/api/product/${productId}`);
+                const productRes = await fetch(`https://admin.maisontatiana7worldwide.com/api/product/${pId}`);
                 if (!productRes.ok) throw new Error('Could not load product details.');
                 const productData = await productRes.json();
                 setProduct(productData);
@@ -342,7 +344,7 @@ function CheckoutComponent() {
         Object.entries(form).forEach(([key, value]) => formData.append(key, value));
         formData.append('quantity', quantity.toString());
         formData.append('price', product.price);
-        formData.append('total_price', (parseFloat(product.price) * quantity + SHIPPING_COST).toFixed(2));
+        formData.append('total_price', (parseFloat(product.price) * quantity).toFixed(2));
         formData.append('payment_screenshot', file!);
 
         try {
@@ -391,8 +393,6 @@ function CheckoutComponent() {
     const handleCopyWallet = () => {
         const wallet = blockchainOptions.find(opt => opt.key === blockchainType)?.wallet || '';
         navigator.clipboard.writeText(wallet);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1500);
     };
 
     return (
@@ -406,7 +406,7 @@ function CheckoutComponent() {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
                     <div className="lg:pr-8">
-                         <div className="mb-12 mt-12">
+                         <div className="mb-12">
                             <h2 className="text-2xl font-serif tracking-wider mb-4">Choose Payment Method</h2>
                             <div className="mb-4">
                                 <label className="flex items-center gap-2">
@@ -545,50 +545,14 @@ function CheckoutComponent() {
                             </div>
                             <div className="mt-6 border-t pt-6 space-y-4 text-gray-700">
                                 <div className="flex justify-between"><span>Subtotal</span><span>€{(parseFloat(product.price) * quantity).toFixed(2)}</span></div>
-                                <div className="flex justify-between"><span>Shipping</span><span>€{SHIPPING_COST.toFixed(2)}</span></div>
-                                <div className="flex justify-between text-lg font-bold border-t pt-4 mt-4"><span>Total</span><span>€{(parseFloat(product.price) * quantity + SHIPPING_COST).toFixed(2)}</span></div>
+                                <div className="flex justify-between"><span>Shipping</span><span>Free</span></div>
+                                <div className="flex justify-between text-lg font-bold border-t pt-4 mt-4"><span>Total</span><span>€{(parseFloat(product.price) * quantity).toFixed(2)}</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
             <Footer />
-            {showQrModal && blockchainType && (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
-        <div className="relative bg-white rounded-lg p-8 w-full max-w-2xl mx-auto flex flex-col items-center">
-            {/* Close Icon */}
-            <button
-                type="button"
-                className="absolute top-6 right-6 text-gray-500 hover:text-black"
-                onClick={() => setShowQrModal(false)}
-                aria-label="Close"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeWidth="2"/>
-                    <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeWidth="2"/>
-                </svg>
-            </button>
-            {/* Large QR Code */}
-            <img
-                src={blockchainOptions.find(opt => opt.key === blockchainType)?.qr}
-                alt="QR Code Large"
-                className="w-96 h-96 mb-8"
-            />
-            {/* Wallet Address Box */}
-            <div className="w-full bg-gray-100 rounded-md px-4 py-4 mb-6 flex items-center justify-between">
-                <code className="break-all text-gray-800 text-base">{blockchainOptions.find(opt => opt.key === blockchainType)?.wallet}</code>
-                <button
-                    type="button"
-                    className={`ml-2 px-3 py-2 rounded text-sm font-semibold transition-colors duration-200 ${copied ? 'bg-yellow-400 text-black' : 'bg-gray-200 hover:bg-gray-300'}`}
-                    onClick={handleCopyWallet}
-                >
-                    {copied ? 'Copied!' : 'Copy'}
-                </button>
-            </div>
-            <p className="text-gray-500 text-sm text-center">Scan QR or copy wallet address to pay</p>
-        </div>
-    </div>
-)}
         </div>
     );
 }
@@ -603,3 +567,4 @@ export default function CheckoutPage() {
         </Suspense>
     );
 }
+
