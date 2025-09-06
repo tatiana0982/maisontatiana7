@@ -230,14 +230,16 @@ function CheckoutComponent() {
             name: 'Ethereum (ETH)',
             logo: 'images/ethereum-eth.svg',
             qr: 'images/eth.jpg',
-            wallet: '0x1234567890ABCDEF1234567890ABCDEF12345678'
+            wallet: '0x1234567890ABCDEF1234567890ABCDEF12345678',
+            description: '⚠ Only send ETH on the Ethereum (ERC-20) network. Sending any other coin or network will result in loss of funds.'
         },
         {
             key: 'usdt',
             name: 'Tether (USDT)',
             logo: 'images/tether.svg',
             qr: 'images/usdt.jpg',
-            wallet: 'TQ1234567890ABCDEF1234567890ABCDEF12345678'
+            wallet: 'TQ1234567890ABCDEF1234567890ABCDEF12345678',
+            description: '⚠ Only send USDT on the TRON (TRC-20) network. Sending any other coin or using a different network will result in loss of funds.'
         }
     ];
 
@@ -471,9 +473,12 @@ function CheckoutComponent() {
                                             <img src={blockchainOptions.find(opt => opt.key === blockchainType)?.qr} alt="QR Code" className="w-32 h-32 mb-4" />
                                             <p className="font-bold mb-2">Wallet Address:</p>
                                             <p className="break-all text-gray-800 text-center mb-2">{blockchainOptions.find(opt => opt.key === blockchainType)?.wallet}</p>
+                                        +   <p className="text-red-600 text-xs text-center mt-4">{blockchainOptions.find(opt => opt.key === blockchainType)?.description}</p>
+
                                         </div>
                                     )}
                                 </div>
+                                
                             )}
                         </div>
                         <h2 className="text-2xl font-serif tracking-wider mb-4">Shipping Information</h2>
@@ -587,7 +592,9 @@ function CheckoutComponent() {
                     {copied ? 'Copied!' : 'Copy'}
                 </button>
             </div>
-            <p className="text-gray-500 text-sm text-center">Scan QR or copy wallet address to pay</p>
+            <p className="text-gray-500 text-sm text-center">
+⚠ Only send ETH on the Ethereum (ERC-20) network or USDT on the TRON (TRC-20) network. Sending any other coin or network will result in loss of funds.
+</p>
         </div>
     </div>
 )}

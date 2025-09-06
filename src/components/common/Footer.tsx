@@ -47,19 +47,10 @@ const Footer: React.FC = () => {
       { name: "Contact us", href: "/contact" },
       { name: "Returns", href: "/returns" },
       { name: "FAQ", href: "/faq" },
-      { name: "Track Your Order", href: "/track-order" },
-      { name: "Receive My Invoice", href: "/invoice" },
-    ],
-    "Maison Tatiana 7": [
-      { name: "Sustainability", href: "/sustainability" },
-      { name: "Ethics & Compliance", href: "/ethics" },
-      { name: "Careers", href: "/careers" },
     ],
     "Legal": [
       { name: "Legal Terms", href: "/legal" },
       { name: "Privacy Policy", href: "/privacy" },
-      { name: "Accessibility", href: "/accessibility" },
-      { name: "Sitemap", href: "/sitemap" },
     ],
   };
 
@@ -162,10 +153,7 @@ const Footer: React.FC = () => {
           <div className="border-t pt-8 flex flex-col lg:flex-row justify-between items-center gap-8">
             <div className="text-center lg:text-left text-sm text-gray-500 order-3 lg:order-1">
               Follow Us: 
-              <a href="#" className="ml-2 text-black hover:underline">TikTok</a>
               <a href="https://www.instagram.com/maisontatiana7/" target="_blank" rel="noopener noreferrer" className="ml-4 text-black hover:underline">Instagram</a>
-              <a href="#" className="ml-4 text-black hover:underline">X</a>
-              <a href="#" className="ml-4 text-black hover:underline">Facebook</a>
             </div>
             <div className="order-1 lg:order-2">
               <Link href="/"><Image src="/images/img_image_2.png" width={200} height={42} alt="Maison Tatiana 7 Logo"/></Link>
