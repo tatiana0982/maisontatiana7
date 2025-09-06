@@ -170,13 +170,6 @@ const Footer: React.FC = () => {
             <div className="order-1 lg:order-2">
               <Link href="/"><Image src="/images/img_image_2.png" width={200} height={42} alt="Maison Tatiana 7 Logo"/></Link>
             </div>
-            <div className="order-2 lg:order-3 flex items-center gap-3">
-              <Image src="/images/z_visa.png" width={35} height={23} alt="Visa"/>
-              <Image src="/images/z_mastercard.png" width={35} height={23} alt="Mastercard"/>
-              <Image src="/images/z_discover.png" width={35} height={23} alt="Discover"/>
-              <Image src="/images/z_american_express.png" width={35} height={23} alt="American Express"/>
-              <Image src="/images/z_paypal.png" width={35} height={23} alt="PayPal"/>
-            </div>
           </div>
 
         </div>

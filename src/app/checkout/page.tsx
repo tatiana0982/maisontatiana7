@@ -220,6 +220,27 @@ function CheckoutComponent() {
     const [loading, setLoading] = useState(false);
     const [apiError, setApiError] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [paymentMethod, setPaymentMethod] = useState<'bank' | 'blockchain'>('bank');
+    const [blockchainType, setBlockchainType] = useState<'eth' | 'usdt' | null>(null);
+    const [showQrModal, setShowQrModal] = useState(false);
+    const [copied, setCopied] = useState(false);
+
+    const blockchainOptions = [
+        {
+            key: 'eth',
+            name: 'Ethereum (ETH)',
+            logo: 'images/ethereum-eth.svg',
+            qr: 'images/eth.jpg',
+            wallet: '0x1234567890ABCDEF1234567890ABCDEF12345678'
+        },
+        {
+            key: 'usdt',
+            name: 'Tether (USDT)',
+            logo: 'images/tether.svg',
+            qr: 'images/usdt.jpg',
+            wallet: 'TQ1234567890ABCDEF1234567890ABCDEF12345678'
+        }
+    ];
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -363,6 +384,20 @@ function CheckoutComponent() {
 
     const getError = (fieldName: keyof FormState) => errors[fieldName] ? <p className="text-red-500 text-xs mt-1">{errors[fieldName]}</p> : null;
 
+    const MagnifyIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500 hover:text-black cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" strokeWidth="2" />
+        </svg>
+    );
+
+    const handleCopyWallet = () => {
+        const wallet = blockchainOptions.find(opt => opt.key === blockchainType)?.wallet || '';
+        navigator.clipboard.writeText(wallet);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+    };
+
     return (
         <div className="bg-gray-50 min-h-screen font-sans text-gray-800">
             <Header onMenuOpen={() => setIsMenuOpen(true)} />
@@ -374,15 +409,73 @@ function CheckoutComponent() {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
                     <div className="lg:pr-8">
-                         <div className="mb-12">
-                            <h2 className="text-2xl font-serif tracking-wider mb-4">Bank Details</h2>
-                            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-gray-700 space-y-3">
-                                {bankDetails ? (<>
-                                    <p><strong>Account Name:</strong> {bankDetails.account_name}</p>
-                                    <p><strong>Account Number:</strong> {bankDetails.account_number}</p>
-                                    <p><strong>IFSC Code:</strong> {bankDetails.ifsc_code}</p>
-                                </>) : <p>Loading bank details...</p>}
+                         <div className="mb-12 mt-12">
+                            <h2 className="text-2xl font-serif tracking-wider mb-4">Choose Payment Method</h2>
+                            <div className="mb-4">
+                                <label className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        checked={paymentMethod === 'bank'}
+                                        onChange={() => setPaymentMethod('bank')}
+                                        className="accent-black"
+                                    />
+                                    <span className="font-semibold">Bank Transfer</span>
+                                </label>
+                                <label className="flex items-center gap-2 mt-2">
+                                    <input
+                                        type="checkbox"
+                                        checked={paymentMethod === 'blockchain'}
+                                        onChange={() => setPaymentMethod('blockchain')}
+                                        className="accent-black"
+                                    />
+                                    <span className="font-semibold">Blockchain (Crypto)</span>
+                                </label>
                             </div>
+                            {paymentMethod === 'bank' && (
+                                <div>
+                                    <h3 className="text-lg font-bold mb-2">Bank</h3>
+                                    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-gray-700 space-y-3">
+                                        {bankDetails ? (<>
+                                            <p><strong>Account Name:</strong> {bankDetails.account_name}</p>
+                                            <p><strong>Account Number:</strong> {bankDetails.account_number}</p>
+                                            <p><strong>IFSC Code:</strong> {bankDetails.ifsc_code}</p>
+                                        </>) : <p>Loading bank details...</p>}
+                                    </div>
+                                </div>
+                            )}
+                            {paymentMethod === 'blockchain' && (
+                                <div>
+                                    <h3 className="text-lg font-bold mb-2">Blockchain</h3>
+                                    <div className="flex gap-6 mb-4">
+                                        {blockchainOptions.map(option => (
+                                            <button
+                                                key={option.key}
+                                                type="button"
+                                                className={`flex flex-col items-center p-4 border rounded-lg transition-colors duration-200 ${blockchainType === option.key ? 'border-black bg-gray-100' : 'border-gray-300 bg-white'}`}
+                                                onClick={() => setBlockchainType(option.key as 'eth' | 'usdt')}
+                                            >
+                                                <img src={option.logo} alt={option.name} className="w-10 h-10 mb-2" />
+                                                <span className="font-semibold">{option.name}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                    {blockchainType && (
+                                        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-gray-700 flex flex-col items-center relative">
+                                            <button
+                                                type="button"
+                                                className="absolute top-2 right-2"
+                                                onClick={() => setShowQrModal(true)}
+                                                aria-label="Magnify QR"
+                                            >
+                                                <MagnifyIcon />
+                                            </button>
+                                            <img src={blockchainOptions.find(opt => opt.key === blockchainType)?.qr} alt="QR Code" className="w-32 h-32 mb-4" />
+                                            <p className="font-bold mb-2">Wallet Address:</p>
+                                            <p className="break-all text-gray-800 text-center mb-2">{blockchainOptions.find(opt => opt.key === blockchainType)?.wallet}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                         <h2 className="text-2xl font-serif tracking-wider mb-4">Shipping Information</h2>
                         <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-gray-200">
@@ -463,6 +556,42 @@ function CheckoutComponent() {
                 </div>
             </main>
             <Footer />
+            {showQrModal && blockchainType && (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+        <div className="relative bg-white rounded-lg p-8 w-full max-w-2xl mx-auto flex flex-col items-center">
+            {/* Close Icon */}
+            <button
+                type="button"
+                className="absolute top-6 right-6 text-gray-500 hover:text-black"
+                onClick={() => setShowQrModal(false)}
+                aria-label="Close"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeWidth="2"/>
+                    <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+            </button>
+            {/* Large QR Code */}
+            <img
+                src={blockchainOptions.find(opt => opt.key === blockchainType)?.qr}
+                alt="QR Code Large"
+                className="w-96 h-96 mb-8"
+            />
+            {/* Wallet Address Box */}
+            <div className="w-full bg-gray-100 rounded-md px-4 py-4 mb-6 flex items-center justify-between">
+                <code className="break-all text-gray-800 text-base">{blockchainOptions.find(opt => opt.key === blockchainType)?.wallet}</code>
+                <button
+                    type="button"
+                    className={`ml-2 px-3 py-2 rounded text-sm font-semibold transition-colors duration-200 ${copied ? 'bg-yellow-400 text-black' : 'bg-gray-200 hover:bg-gray-300'}`}
+                    onClick={handleCopyWallet}
+                >
+                    {copied ? 'Copied!' : 'Copy'}
+                </button>
+            </div>
+            <p className="text-gray-500 text-sm text-center">Scan QR or copy wallet address to pay</p>
+        </div>
+    </div>
+)}
         </div>
     );
 }
