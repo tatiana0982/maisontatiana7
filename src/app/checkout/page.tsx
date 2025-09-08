@@ -22,14 +22,6 @@ const Button = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonEle
     </button>
 );
 
-
-// --- Type Definitions ---
-type BankDetails = {
-    account_number: string;
-    account_name: string;
-    ifsc_code: string;
-};
-
 type ProductDetails = {
     id: string;
     title: string;
@@ -210,7 +202,6 @@ function CheckoutComponent() {
     const [quantity, setQuantity] = useState(1);
 
     const [product, setProduct] = useState<ProductDetails | null>(null);
-    const [bankDetails, setBankDetails] = useState<BankDetails | null>(null);
     const [form, setForm] = useState<FormState>({ email: '', name: '', phone: '', country: '', state: '', city: '', zip_code: '', address_line: '' });
     const [errors, setErrors] = useState<Partial<FormState>>({});
     const [file, setFile] = useState<File | null>(null);
@@ -261,11 +252,6 @@ function CheckoutComponent() {
                 if (!productRes.ok) throw new Error('Could not load product details.');
                 const productData = await productRes.json();
                 setProduct(productData);
-
-                const bankRes = await fetch('https://admin.maisontatiana7worldwide.com/api/bank-details');
-                if (!bankRes.ok) throw new Error('Failed to fetch bank details');
-                const bankData = await bankRes.json();
-                setBankDetails(bankData);
             } catch (err: any) {
                 setApiError(err.message);
             }
@@ -436,11 +422,7 @@ function CheckoutComponent() {
                                 <div>
                                     <h3 className="text-lg font-bold mb-2">Bank</h3>
                                     <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-gray-700 space-y-3">
-                                        {bankDetails ? (<>
-                                            <p><strong>Account Name:</strong> {bankDetails.account_name}</p>
-                                            <p><strong>Account Number:</strong> {bankDetails.account_number}</p>
-                                            <p><strong>IFSC Code:</strong> {bankDetails.ifsc_code}</p>
-                                        </>) : <p>Loading bank details...</p>}
+                                            <p>For Bank Transfer email to <strong>maisontatiana7@outlook.com</strong> for bank information.</p>
                                     </div>
                                 </div>
                             )}
