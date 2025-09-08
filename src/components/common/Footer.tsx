@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
   const promoLinks = [
     { title: 'Discover the Maison Tatiana 7 fragrance match for your unique scent profile', subtitle: 'Start the guided experience to find the scent that fits you best.', href: '/products' },
     { title: 'Exclusives: Explore limited-edition Maison icons', subtitle: 'Available only on maisontatiana7worldwide.com', href: '/products' },
-    { title: 'Limited: Members-Only First Purchase Gift', subtitle: 'Get 20% discount with your first purchase.', href: '/products' },
+    { title: 'Limited: Members-Only First Purchase Gift', subtitle: 'Join our community for style tips, product launches, and more.', href: '/products' },
   ];
 
   // --- FIX 3: Restructure footerLinks data to include name and href for proper linking ---
@@ -51,6 +51,13 @@ const Footer: React.FC = () => {
     "Legal": [
       { name: "Legal Terms", href: "/legal" },
       { name: "Privacy Policy", href: "/privacy" },
+      { name: "Careers", href: "/contact" },
+    ],
+    "Become": [
+      { name: "Maison Tatiana 7 Ambassador", href: "/contact" },
+      { name: "Social Media Manager", href: "/contact" },
+      { name: "Content Creators", href: "/contact" },
+      
     ],
   };
 
