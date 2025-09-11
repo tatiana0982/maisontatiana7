@@ -4,6 +4,31 @@ import { HiSpeakerWave, HiSpeakerXMark } from 'react-icons/hi2'; // Make sure re
 const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
+  // State to hold the correct video source based on screen size
+  const [videoSrc, setVideoSrc] = useState('/videos/video.mp4');
+
+  // Effect to set the video source based on screen width
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)'); // Corresponds to Tailwind's `md` breakpoint
+
+    const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) {
+        setVideoSrc('/videos/video2.mp4'); // Small screen video
+      } else {
+        setVideoSrc('/videos/video.mp4'); // Large screen video
+      }
+    };
+
+    // Set the initial video source
+    handleResize(mediaQuery);
+
+    // Listen for changes in screen size
+    mediaQuery.addEventListener('change', handleResize);
+
+    // Cleanup listener on component unmount
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
+
 
   useEffect(() => {
     const video = videoRef.current;
@@ -15,7 +40,7 @@ const Hero: React.FC = () => {
         console.warn('Autoplay might be blocked:', err)
       );
     }
-  }, []);
+  }, [videoSrc]); // Rerun this effect when the video source changes
 
   const toggleMute = () => {
     const video = videoRef.current;
@@ -34,8 +59,9 @@ const Hero: React.FC = () => {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-white">
       <video
+        key={videoSrc} // Add key to force re-render when src changes
         ref={videoRef}
-        src="/videos/video.mp4"
+        src={videoSrc} // Use state for the video source
         className="w-full h-full object-cover"
         autoPlay
         loop
