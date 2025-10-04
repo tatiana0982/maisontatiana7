@@ -13,9 +13,9 @@ const Hero: React.FC = () => {
 
     const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
       if (e.matches) {
-        setVideoSrc('/videos/video2.mp4'); // Small screen video
+        setVideoSrc('/videos/video1.mp4'); // Small screen video
       } else {
-        setVideoSrc('/videos/video.mp4'); // Large screen video
+        setVideoSrc('/videos/video1.mp4'); // Large screen video
       }
     };
 
