@@ -1,25 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { HiSpeakerWave, HiSpeakerXMark } from 'react-icons/hi2'; // Make sure react-icons is installed
+import React, { useEffect, useState } from 'react';
 
 const Hero: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  // State to hold the correct video source based on screen size
-  const [videoSrc, setVideoSrc] = useState('/videos/video.mp4');
+  const [imageSrc, setImageSrc] = useState('/images/heroimg.jpg'); // Image source for both screen sizes
 
-  // Effect to set the video source based on screen width
+  // Effect to listen to window resizing
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 767px)'); // Corresponds to Tailwind's `md` breakpoint
+    const mediaQuery = window.matchMedia('(max-width: 767px)'); // Example for small screen size
 
     const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
-      if (e.matches) {
-        setVideoSrc('/videos/video1.mp4'); // Small screen video
-      } else {
-        setVideoSrc('/videos/video1.mp4'); // Large screen video
-      }
+      setImageSrc('/images/heroimg.jpg'); // Always use the same image
     };
 
-    // Set the initial video source
+    // Set the initial image source
     handleResize(mediaQuery);
 
     // Listen for changes in screen size
@@ -29,63 +21,14 @@ const Hero: React.FC = () => {
     return () => mediaQuery.removeEventListener('change', handleResize);
   }, []);
 
-
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (video) {
-      // Always start muted for autoplay to work
-      video.muted = true;
-      video.play().catch((err) =>
-        console.warn('Autoplay might be blocked:', err)
-      );
-    }
-  }, [videoSrc]); // Rerun this effect when the video source changes
-
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (video) {
-      const newMuted = !isMuted;
-      video.muted = newMuted;
-      setIsMuted(newMuted);
-
-      // Replay to ensure sound starts on unmute (if paused or blocked)
-      video.play().catch((err) =>
-        console.warn('Playback failed after unmute:', err)
-      );
-    }
-  };
-
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-white">
-      <video
-        key={videoSrc} // Add key to force re-render when src changes
-        ref={videoRef}
-        src={videoSrc} // Use state for the video source
-        className="w-full h-full object-cover"
-        autoPlay
-        loop
-        playsInline
-        muted
-        poster="/images/bg_poster.png"
+    <section className="relative min-h-screen w-full overflow-hidden bg-white">
+      {/* Image Display */}
+      <img
+        src={imageSrc}
+        alt="Hero Image"
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
       />
-
-      {/* Sound Toggle Button */}
-      <button
-        onClick={toggleMute}
-        className={`
-          absolute bottom-4 right-4 z-10
-          p-2 rounded-full bg-black/50 text-white transition
-          hover:bg-black/70
-          md:p-3 md:bottom-6 md:right-6
-        `}
-      >
-        {isMuted ? (
-          <HiSpeakerXMark className="w-6 h-6 md:w-8 md:h-8" />
-        ) : (
-          <HiSpeakerWave className="w-6 h-6 md:w-8 md:h-8" />
-        )}
-      </button>
     </section>
   );
 };
